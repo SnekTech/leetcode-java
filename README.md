@@ -5,6 +5,7 @@ LeetCode(CN) solutions written in Java11.
 ## Progress
 
 - [1](leetcode/task1/Solution.java)
+- [392](leetcode/task392/Solution.java)
 
 ## Awesome Tools
 

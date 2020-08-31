@@ -3,9 +3,9 @@ package leetcode.task1;
 import static org.junit.Assert.assertArrayEquals;
 import org.junit.Test;
 
-public class Task1Test {
+public class Test1 {
     @Test
-    public void demo() {
+    public void example() {
         int[] nums = {2, 7, 11, 15};
         int target = 9;
         int[] expecteds = { 0, 1 };
