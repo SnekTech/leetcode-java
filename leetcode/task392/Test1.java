@@ -11,7 +11,7 @@ public class Test1 {
         String t = "ahbgdc";
         boolean expected = true;
 
-        boolean actual = new Solution().isSubSequence(s, t);
+        boolean actual = new Solution().isSubsequence(s, t);
 
         assertEquals(expected, actual);
     }
@@ -22,7 +22,18 @@ public class Test1 {
         String t = "ahbgdc";
         boolean expected = false;
 
-        boolean actual = new Solution().isSubSequence(s, t);
+        boolean actual = new Solution().isSubsequence(s, t);
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void wrong1() {
+        String s = "aaaaaa";
+        String t = "bbaaaa";
+        boolean expected = false;
+
+        boolean actual = new Solution().isSubsequence(s, t);
 
         assertEquals(expected, actual);
     }
