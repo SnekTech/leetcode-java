@@ -1,30 +1,32 @@
 package leetcode.task409;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * @see https://leetcode-cn.com/problems/longest-palindrome/
  */
 public class Solution {
     public int longestPalindrome(String s) {
-        int result = 0;
+        int[] result = new int[] {0};
         
-        ArrayList<Character> list = new ArrayList<>();
+        HashMap<Character, Integer> map = new HashMap<>();
         for (int i = 0; i < s.length(); i++) {
-            char current = s.charAt(i);
-            if (list.indexOf(current) != -1) {
-                list.remove(list.indexOf(current));
-                result++;
-            } else {
-                list.add(current);
+            map.merge(s.charAt(i), 1, Integer::sum);
+        }
+
+        map.forEach((k, v) -> {
+            if (v >= 2) {
+                result[0] += v / 2;
+                map.put(k, v % 2);
             }
+        });
+
+        result[0] *= 2;
+
+        if (map.containsValue(1)) {
+            result[0]++;
         }
 
-        result*=2;
-        if (list.size() != 0) {
-            result++;
-        }
-
-        return result;
+        return result[0];
     }
 }
