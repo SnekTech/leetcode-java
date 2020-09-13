@@ -10,7 +10,7 @@ public class Test1 {
         String s = "abcd";
         String t = "abcde";
 
-        char expected = 'c';
+        char expected = 'e';
         char actual = new Solution().findTheDifference(s, t);
 
         assertEquals(expected, actual);
