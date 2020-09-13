@@ -16,6 +16,7 @@ public class Solution {
         }
 
         for (int i = 0; i < myFlowerbed.length; i++) {
+            // use short circuit
             if (i > 0 && flowerbed[i - 1] == 1 || i < myFlowerbed.length - 1 && flowerbed[i + 1] == 1) {
                 myFlowerbed[i] = 1;
             }
