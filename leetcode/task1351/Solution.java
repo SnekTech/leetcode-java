@@ -5,6 +5,21 @@ package leetcode.task1351;
  */
 public class Solution {
     public int countNegatives(int[][] grid) {
-        return 0;
+        int m = grid.length;
+        int n = grid[0].length;
+        int negativeCount = m * n;
+
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (grid[i][j] >= 0) {
+                    negativeCount--;
+                }
+                else {
+                    break;
+                }
+            }
+        }
+
+        return negativeCount;
     }
 }
