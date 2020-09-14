@@ -64,4 +64,16 @@ public class Test1 {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    public void wrong1() {
+        int[] arr = new int[] { 2, 2 };
+        int m = 1;
+        int k = 2;
+
+        boolean expected = true;
+        boolean actual = new Solution().containsPattern(arr, m, k);
+
+        assertEquals(expected, actual);
+    }
 }
