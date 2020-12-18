@@ -50,6 +50,23 @@ public class Test1 {
         };
 
         Solution solution = new Solution();
+        int expected = 2;
+        int actual = solution.closedIsland(grid);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void wrong1() {
+        
+        int[][] grid = new int[][] {
+            {0,1,1,1,0},
+            {1,0,1,0,1},
+            {1,0,1,0,1},
+            {1,0,0,0,1},
+            {0,1,1,1,0}
+        };
+
+        Solution solution = new Solution();
         int expected = 1;
         int actual = solution.closedIsland(grid);
         assertEquals(expected, actual);
