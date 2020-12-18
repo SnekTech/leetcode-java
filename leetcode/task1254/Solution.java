@@ -17,12 +17,25 @@ public class Solution {
         }
     }
 
+    private enum LandState {
+        Unset,
+        Open,
+        Closed
+    }
+
     public int closedIsland(int[][] grid) {
         int m = grid.length;
         int n = grid[0].length;
         assert(m >= 1);
         assert(n >= 1);
-        boolean[][] visited = getEmptyVisitedMatrix(m, n);
+        boolean[][] visited = new boolean[m][n];
+        LandState[][] states = new LandState[m][n];
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < m; j++) {
+                states[i][j] = LandState.Unset;
+            }
+        }
+        setMatrix(visited, m, n, false);
 
         List<List<Land>> results = new ArrayList<>();
 
@@ -30,18 +43,19 @@ public class Solution {
             for (int j = 0; j < n; j++) {
                 if (grid[i][j] == 1) {
                     // water
-                    visited[i][j] = true;
                     continue;
                 }
 
                 List<Land> island = new ArrayList<>();
-                dfs(grid, i, j, m, n, island, visited);
-                if (!island.isEmpty()) {
-                    Land land = island.get(0);
-                    boolean[][] localVisited = getEmptyVisitedMatrix(m, n);
-                    
-                    if (isSurroundedByWater(grid, land.i, land.j, m, n, localVisited)) {
+                LandState state = dfs(grid, i, j, m, n, island, visited, states);
+                if (state != LandState.Open) {
+                    if (!island.isEmpty()) {
                         results.add(island);
+                    }
+                    if (state == LandState.Unset) {
+                        for (Land land : island) {
+                            states[land.i][land.j] = LandState.Closed;
+                        }
                     }
                 }
             }
@@ -50,63 +64,62 @@ public class Solution {
         return results.size();
     }
 
-    private void dfs(int[][] grid, int i, int j, int m, int n, List<Land> island, boolean[][] visited) {
-        assert(m == visited.length);
-        assert(n == visited[0].length);
-        
+    private LandState dfs(int[][] grid, int i, int j, int m, int n, List<Land> island, boolean[][] visited, LandState[][] states) {
         if (i < 0 || i >= m || j < 0 || j >= n) {
             // out of index
-            return;
-        }
-
-        if (visited[i][j]) {
-            // this position is visited
-            return;
-        }
-
-        if (grid[i][j] == 1) {
-            // water
-            return;
-        }
-
-        island.add(new Land(i, j));
-        visited[i][j] = true;
-        dfs(grid, i - 1, j, m, n, island, visited);
-        dfs(grid, i + 1, j, m, n, island, visited);
-        dfs(grid, i, j - 1, m, n, island, visited);
-        dfs(grid, i, j + 1, m, n, island, visited);
-    }
-
-    private boolean isSurroundedByWater(int[][] grid, int i, int j, int m, int n, boolean[][] visited) {
-        if (i < 0 || i >= m || j < 0 || j >= n) {
-            // out of index
-            return false;
-        }
-
-        if (grid[i][j] == 1) {
-            return true;
+            return LandState.Open;
         }
 
         if (visited[i][j]) {
             // going back to visited does not affect the result
-            return true;
+            LandState state = states[i][j];
+            return state;
+        }
+
+        if (grid[i][j] == 1) {
+            // water
+            return LandState.Closed;
         }
 
         visited[i][j] = true;
+        LandState upState = dfs(grid, i - 1, j, m, n, island, visited, states);
+        if (upState == LandState.Open) {
+            states[i][j] = LandState.Open;
+            return LandState.Open;
+        }
+        LandState downState = dfs(grid, i + 1, j, m, n, island, visited, states);
+        if (downState == LandState.Open) {
+            states[i][j] = LandState.Open;
+            return LandState.Open;
+        }
+        LandState leftState = dfs(grid, i, j - 1, m, n, island, visited, states);
+        if (leftState == LandState.Open) {
+            states[i][j] = LandState.Open;
+            return LandState.Open;
+        }
+        LandState rightState = dfs(grid, i, j + 1, m, n, island, visited, states);
+        if (rightState == LandState.Open) {
+            states[i][j] = LandState.Open;
+            return LandState.Open;
+        }
+        
+        island.add(new Land(i, j));
+        
+        if (upState == LandState.Unset || downState == LandState.Unset || 
+        leftState == LandState.Unset || rightState == LandState.Unset) {
+            return LandState.Unset;
+        }
+        
+        states[i][j] = LandState.Closed;
 
-        return isSurroundedByWater(grid, i - 1, j, m, n, visited) &&
-            isSurroundedByWater(grid, i + 1, j, m, n, visited) &&
-            isSurroundedByWater(grid, i, j - 1, m, n, visited) &&
-            isSurroundedByWater(grid, i, j + 1, m, n, visited);
+        return LandState.Closed;
     }
 
-    private boolean[][] getEmptyVisitedMatrix(int m, int n) {
-        boolean[][] visited = new boolean[m][n];
+    private void setMatrix(boolean[][] matrix, int m, int n, boolean value) {
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
-                visited[i][j] = false;
+                matrix[i][j] = value;
             }
         }
-        return visited;
     }
 }
