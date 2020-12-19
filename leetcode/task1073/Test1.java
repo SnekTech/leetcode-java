@@ -14,4 +14,15 @@ public class Test1 {
         int[] actual = solution.addNegabinary(arr1, arr2);
         assertArrayEquals(expected, actual);
     }
+
+    @Test
+    public void wrong1() {
+        int[] arr1 = new int[]{0};
+        int[] arr2 = new int[]{1, 0};
+
+        Solution solution = new Solution();
+        int[] expected = new int[]{1, 0};
+        int[] actual = solution.addNegabinary(arr1, arr2);
+        assertArrayEquals(expected, actual);
+    }
 }
