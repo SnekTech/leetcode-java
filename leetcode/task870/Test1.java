@@ -1,10 +1,30 @@
 package leetcode.task870;
 
-import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
 public class Test1 {
+
+    private static boolean isPassed(int[] expected, int[] actual, int[] B) {
+        if (expected.length != actual.length || actual.length != B.length) {
+            return false;
+        }
+
+        int advantageExpected = 0;
+        int advantageActual = 0;
+        for (int i = 0; i < expected.length; i++) {
+            if (expected[i] > B[i]) {
+                advantageExpected++;
+            }
+            if (actual[i] > B[i]) {
+                advantageActual++;
+            }
+        }
+
+        return advantageExpected == advantageActual;
+    }
+
     @Test
     public void example1() {
         int[] A = new int[] { 2, 7, 11, 15 };
@@ -12,7 +32,7 @@ public class Test1 {
         Solution solution = new Solution();
         int[] expected = new int[] { 2, 11, 7, 15 };
         int[] actual = solution.advantageCount(A, B);
-        assertArrayEquals(expected, actual);
+        assertTrue(isPassed(expected, actual, B));
     }
 
     @Test
@@ -22,6 +42,6 @@ public class Test1 {
         Solution solution = new Solution();
         int[] expected = new int[] { 24, 32, 8, 12 };
         int[] actual = solution.advantageCount(A, B);
-        assertArrayEquals(expected, actual);
+        assertTrue(isPassed(expected, actual, B));
     }
 }
