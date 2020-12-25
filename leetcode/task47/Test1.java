@@ -39,7 +39,7 @@ public class Test1 {
     }
 
     @Test
-    public void example() {
+    public void example1() {
         int[] nums = new int[] { 1, 1, 2 };
         
         Solution solution = new Solution();
@@ -47,6 +47,24 @@ public class Test1 {
                 { 1, 1, 2 },
                 { 1, 2, 1 },
                 { 2, 1, 1 }
+        };
+        List<List<Integer>> expected = from2DArray(expectedNums);
+        List<List<Integer>> actual = solution.permuteUnique(nums);
+        assertTrue(test2DList(actual, expected));
+    }
+
+    @Test
+    public void example2() {
+        int[] nums = new int[] { 1, 2, 3 };
+
+        Solution solution = new Solution();
+        int[][] expectedNums = new int[][]{
+                {1, 2, 3},
+                {1, 3, 2},
+                {2, 1, 3},
+                {2, 3, 1},
+                {3, 1, 2},
+                {3, 2, 1}
         };
         List<List<Integer>> expected = from2DArray(expectedNums);
         List<List<Integer>> actual = solution.permuteUnique(nums);
