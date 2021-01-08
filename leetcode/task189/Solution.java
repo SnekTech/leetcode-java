@@ -5,20 +5,30 @@ package leetcode.task189;
  */
 public class Solution {
     public void rotate(int[] nums, int k) {
-        for (int i = 0; i < k; i++) {
-            rotateOnce(nums);
-        }
-    }
-
-    private void rotateOnce(int[] nums) {
-        int length = nums.length;
-        if (length == 1) {
+        int n = nums.length;
+        if (n <= 1) {
             return;
         }
 
-        int last = nums[length - 1];
-        System.arraycopy(nums, 0, nums, 1, length - 1);
+        k %= n;
+        reverse(nums, 0, n - 1);
+        reverse(nums, 0, k - 1);
+        reverse(nums, k, n - 1);
+    }
 
-        nums[0] = last;
+    /**
+     * Reverse nums[i...j]
+     * @param nums integer array
+     * @param i start index - inclusive
+     * @param j end index - inclusive
+     */
+    private void reverse(int[] nums, int i, int j) {
+        while (i < j) {
+            int t = nums[i];
+            nums[i] = nums[j];
+            nums[j] = t;
+            i++;
+            j--;
+        }
     }
 }
