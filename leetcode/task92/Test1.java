@@ -1,34 +1,13 @@
 package leetcode.task92;
 
+import static leetcode.core.ListNode.areListsEqual;
+import static leetcode.core.ListNode.createList;
 import static org.junit.Assert.assertTrue;
+
+import leetcode.core.ListNode;
 import org.junit.Test;
-import leetcode.task92.Solution.ListNode;
 
 public class Test1 {
-    private static ListNode createList(int[] arr) {
-        ListNode dummy = new ListNode(-1);
-        ListNode p = dummy;
-        for (int i = 0; i < arr.length; i++, p = p.next) {
-            p.next = new ListNode(arr[i]);
-        }
-        return dummy.next;
-    }
-
-    private static boolean areListsEqual(ListNode l1, ListNode l2) {
-        ListNode p1 = l1;
-        ListNode p2 = l2;
-
-        while (p1 != null && p2 != null) {
-            if (p1.val != p2.val) {
-                return false;
-            }
-            p1 = p1.next;
-            p2 = p2.next;
-        }
-
-        return p1 == null && p2 == null;
-    }
-
     @Test
     public void wrong1() {
 

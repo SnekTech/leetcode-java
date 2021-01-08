@@ -1,17 +1,11 @@
 package leetcode.task92;
 
+import leetcode.core.ListNode;
+
 /**
  * @see <a href="https://leetcode-cn.com/problems/reverse-linked-list-ii/">link</a>
  */
 public class Solution {
-    public static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-        }
-    }
 
     public ListNode reverseBetween(ListNode head, int m, int n) {
 
