@@ -17,4 +17,16 @@ public class Test1 {
         ListNode actual = solution.addTwoNumbers(l1, l2);
         assertTrue(ListNode.areListsEqual(expected, actual));
     }
+
+    @Test
+    public void wrong1() {
+
+        var l1 = ListNode.createList(new int[] { 9, 9, 9, 9, 9, 9, 9 });
+        var l2 = ListNode.createList(new int[] { 9, 9, 9, 9 });
+
+        Solution solution = new Solution();
+        ListNode expected = ListNode.createList(new int[] { 8, 9, 9, 9, 0, 0, 0, 1 });
+        ListNode actual = solution.addTwoNumbers(l1, l2);
+        assertTrue(ListNode.areListsEqual(expected, actual));
+    }
 }
