@@ -5,6 +5,33 @@ package leetcode.task3;
  */
 public class Solution {
     public int lengthOfLongestSubstring(String s) {
-        return 0;
+        if (s.isEmpty()) {
+            return 0;
+        }
+
+        int max = 1;
+        char[] seq = s.toCharArray();
+        int start = 0, end = 0;
+
+        for (int i = 0; i < s.length(); i++) {
+            char current = seq[i];
+            int pos = -1;
+            for (int j = start; j < end; j++) {
+                if (seq[j] == current) {
+                    pos = j;
+                    break;
+                }
+            }
+            end++;
+
+            if (pos != -1) {
+                start = pos + 1;
+            }
+
+            max = Math.max(max, end - start);
+        }
+
+
+        return max;
     }
 }
