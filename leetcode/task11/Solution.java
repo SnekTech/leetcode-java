@@ -5,27 +5,23 @@ package leetcode.task11;
  */
 public class Solution {
     public int maxArea(int[] height) {
-        return maxSubArea(height, height.length - 1);
-    }
+        if (height.length <= 1) return 0;
 
-    /**
-     * find max from sub area [0 ... end]
-     * @param height original height data
-     * @param end end index (inclusive)
-     * @return max from sub area
-     */
-    private int maxSubArea(int[] height, int end) {
-        if (end <= 0) return 0;
+        int left = 0, right = height.length - 1;
 
-        if (end == 1) {
-            return Math.min(height[0], height[1]);
-        }
-
-        int max = maxSubArea(height, end - 1);
-        for (int i = 0; i < end; i++) {
-            int w = end - i;
-            int h = Math.min(height[i], height[end]);
-            max = Math.max(max, w * h);
+        int max = 0;
+        while (left < right) {
+            int leftHeight = height[left];
+            int rightHeight = height[right];
+            int width = right - left;
+            if (leftHeight < rightHeight) {
+                max = Math.max(max, width * leftHeight);
+                left++;
+            }
+            else {
+                max = Math.max(max, width * rightHeight);
+                right--;
+            }
         }
 
         return max;
