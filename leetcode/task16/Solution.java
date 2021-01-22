@@ -21,15 +21,22 @@ public class Solution {
                     continue;
                 }
 
-                for (int third = second + 1; third < n; third++) {
-                    if (third > second + 1 && nums[third] == nums[third - 1]) {
-                        continue;
+                int third = n - 1;
+                while (second < third) {
+                    int sum = nums[first] + nums[second] + nums[third];
+
+                    if (Math.abs(sum - target) < Math.abs(ans - target)) {
+                        ans = sum;
                     }
 
-                    int a = nums[first], b = nums[second], c = nums[third];
-
-                    if (Math.abs(a + b + c - target) < Math.abs(ans - target)) {
-                        ans = a + b + c;
+                    if (sum > target) {
+                        third--;
+                    }
+                    else if (sum < target) {
+                        second++;
+                    }
+                    else {
+                        return sum;
                     }
                 }
             }

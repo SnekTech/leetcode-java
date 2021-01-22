@@ -35,7 +35,7 @@ LeetCode(CN) solutions written in Java11.
 - [x] [11](leetcode/task11/Solution.java)
 - [x] [12](leetcode/task12/Solution.java)
 - [x] [15](leetcode/task15/Solution.java)
-- [x] [16](leetcode/task16/Solution.java) tbo
+- [x] [16](leetcode/task16/Solution.java)
 - [x] [47](leetcode/task47/Solution.java) tbo
 - [x] [39](leetcode/task39/Solution.java)
 - [x] [40](leetcode/task40/Solution.java)
