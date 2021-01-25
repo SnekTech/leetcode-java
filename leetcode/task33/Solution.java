@@ -10,40 +10,28 @@ public class Solution {
         }
         int n = nums.length;
 
-        int offset = 0;
-        for (int i = 0; i < n; i++) {
-            offset++;
-            if (i == n - 1 || nums[i] >= nums[i + 1]) {
-                break;
-            }
-        }
-
-        offset %= n;
-
-        if (offset > 0) {
-            int[] tmp = new int[n + offset];
-            System.arraycopy(nums, 0, tmp, 0, n);
-            System.arraycopy(nums, 0, tmp, n, offset);
-            nums = tmp;
-        }
-
-        int origin = bSearch(nums, offset, offset + n - 1, target);
-
-        return origin == -1 ? -1 : origin % n;
-    }
-
-    private int bSearch(int[] nums, int i, int j, int target) {
-
+        int i = 0, j = n - 1;
         while (i <= j) {
             int mid = i + (j - i) / 2;
             if (nums[mid] == target) {
                 return mid;
             }
-            else if (nums[mid] > target) {
-                j = mid - 1;
+
+            if (nums[0] <= nums[mid]) {
+                if (nums[0] <= target && target < nums[mid]) {
+                    j = mid - 1;
+                }
+                else {
+                    i = mid + 1;
+                }
             }
             else {
-                i = mid + 1;
+                if (nums[mid] < target && target <= nums[n - 1]) {
+                    i = mid + 1;
+                }
+                else {
+                    j = mid - 1;
+                }
             }
         }
 

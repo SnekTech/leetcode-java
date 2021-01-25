@@ -44,4 +44,24 @@ public class Test1 {
         int actual = solution.search(nums, target);
         assertEquals(expected, actual);
     }
+
+    @Test
+    public void wrong2() {
+        int[] nums = new int[] { 1, 3 };
+        int target = 3;
+        Solution solution = new Solution();
+        int expected = 1;
+        int actual = solution.search(nums, target);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void wrong3() {
+        int[] nums = new int[] { 5, 1, 3 };
+        int target = 5;
+        Solution solution = new Solution();
+        int expected = 0;
+        int actual = solution.search(nums, target);
+        assertEquals(expected, actual);
+    }
 }
