@@ -1,7 +1,5 @@
 package leetcode.task33;
 
-import java.util.Arrays;
-
 /**
  * @see <a href="https://leetcode-cn.com/problems/search-in-rotated-sorted-array/">link</a>
  */
@@ -23,24 +21,19 @@ public class Solution {
         offset %= n;
 
         if (offset > 0) {
-            int[] tmp = Arrays.copyOf(nums, offset);
-            System.arraycopy(nums, offset, nums, 0, n - offset);
-            System.arraycopy(tmp, 0, nums, n - offset, offset);
+            int[] tmp = new int[n + offset];
+            System.arraycopy(nums, 0, tmp, 0, n);
+            System.arraycopy(nums, 0, tmp, n, offset);
+            nums = tmp;
         }
 
-        int origin = bSearch(nums, target);
+        int origin = bSearch(nums, offset, offset + n - 1, target);
 
-        return origin == -1 ? -1 : (origin + offset) % n;
+        return origin == -1 ? -1 : origin % n;
     }
 
-    private int bSearch(int[] nums, int target) {
-        if (nums == null || nums.length == 0) {
-            return -1;
-        }
+    private int bSearch(int[] nums, int i, int j, int target) {
 
-        int n = nums.length;
-
-        int i = 0, j = n - 1;
         while (i <= j) {
             int mid = i + (j - i) / 2;
             if (nums[mid] == target) {
