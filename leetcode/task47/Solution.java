@@ -1,52 +1,53 @@
 package leetcode.task47;
 
+
 import java.util.*;
 
 /**
  * @see <a href="https://leetcode-cn.com/problems/permutations-ii/">link</a>
  */
+@SuppressWarnings("DuplicatedCode")
 public class Solution {
+    List<List<Integer>> result = new ArrayList<>();
+    List<Integer> current = new ArrayList<>();
+    int n;
+    int[] nums;
+    boolean[] visited;
+
     public List<List<Integer>> permuteUnique(int[] nums) {
-        var list = fromIntArray(nums);
-        return permute(list);
-    }
-
-    private static List<Integer> fromIntArray(int[] nums) {
-        List<Integer> list = new LinkedList<>();
-        for (int n : nums)
-            list.add(n);
-
-        return list;
-    }
-
-    List<List<Integer>> permute(List<Integer> nums) {
-        assert nums.size() >= 1;
-        List<List<Integer>> permutes = new LinkedList<>();
-        if (nums.size() == 1) {
-            permutes.add(nums);
-            return permutes;
+        if (nums == null || nums.length == 0) {
+            return result;
         }
 
-        Set<List<Integer>> set = new HashSet<>();
-        for (int i = 0; i < nums.size(); i++) {
-            int current = nums.get(i);
-            var sub = new LinkedList<>(nums.subList(0, i));
-            sub.addAll(nums.subList(i + 1, nums.size()));
-            var localPermutes = permute(sub);
-            for (var permute : localPermutes) {
-                List<Integer> t;
-                for (int j = 0; j < permute.size(); j++) {
-                    t = new LinkedList<>(permute);
-                    t.add(j, current);
-                    set.add(t);
-                }
-                t = new LinkedList<>(permute);
-                t.add(current);
-                set.add(t);
+        n = nums.length;
+        this.nums = nums;
+        visited = new boolean[n];
+        Arrays.fill(visited, false);
+        Arrays.sort(nums);
+
+        backTrack(0);
+
+        return result;
+    }
+
+    private void backTrack(int pos) {
+        if (pos == n) {
+            result.add(new ArrayList<>(current));
+            return;
+        }
+
+        for (int i = 0; i < n; i++) {
+            if (i > 0 && nums[i] == nums[i - 1] && !visited[i - 1]) {
+                continue;
+            }
+
+            if (!visited[i]) {
+                current.add(nums[i]);
+                visited[i] = true;
+                backTrack(pos + 1);
+                current.remove(current.size() - 1);
+                visited[i] = false;
             }
         }
-
-        permutes.addAll(set);
-        return permutes;
     }
 }
