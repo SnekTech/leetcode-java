@@ -5,6 +5,8 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class Test1 {
+    private static final double DOUBLE_COMPARISON_DELTA = 0.0000001;
+
     @Test
     public void example1() {
         double x = 2;
@@ -22,7 +24,7 @@ public class Test1 {
         Solution solution = new Solution();
         double expected = 9.261;
         double actual = solution.myPow(x, n);
-        assertEquals(expected, actual, 0.0000001);
+        assertEquals(expected, actual, DOUBLE_COMPARISON_DELTA);
     }
 
     @Test
@@ -32,6 +34,6 @@ public class Test1 {
         Solution solution = new Solution();
         double expected = 0.25;
         double actual = solution.myPow(x, n);
-        assertEquals(expected, actual, 0);
+        assertEquals(expected, actual, DOUBLE_COMPARISON_DELTA);
     }
 }
