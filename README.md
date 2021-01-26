@@ -5,7 +5,6 @@ LeetCode(CN) solutions written in Java11.
 ## Progress
 
 > tbo -> to be optimized
-> v -> violent
 
 ### Easy
 
@@ -22,7 +21,7 @@ LeetCode(CN) solutions written in Java11.
 - [x] [1337](leetcode/task1337/Solution.java)
 - [x] [1351](leetcode/task1351/Solution.java)
 - [x] [1394](leetcode/task1394/Solution.java)
-- [x] [1566](leetcode/task1566/Solution.java) tbo v
+- [x] [1566](leetcode/task1566/Solution.java) tbo
 - [x] [剑指offer-57-2](offerHunter/task57_2/Solution.java)
 
 ### Normal
@@ -49,7 +48,7 @@ LeetCode(CN) solutions written in Java11.
 - [x] [43](leetcode/task43/Solution.java)
 - [x] [46](leetcode/task46/Solution.java)
 - [x] [47](leetcode/task47/Solution.java)
-- [ ] [49](leetcode/task49/Solution.java)
+- [x] [49](leetcode/task49/Solution.java) tbo
 - [x] [86](leetcode/task86/Solution.java)
 - [x] [92](leetcode/task92/Solution.java)
 - [x] [189](leetcode/task189/Solution.java)
