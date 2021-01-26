@@ -22,7 +22,7 @@ public class Test1 {
         Solution solution = new Solution();
         double expected = 9.261;
         double actual = solution.myPow(x, n);
-        assertEquals(expected, actual, 0);
+        assertEquals(expected, actual, 0.0000001);
     }
 
     @Test
