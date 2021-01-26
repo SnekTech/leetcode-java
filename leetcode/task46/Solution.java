@@ -1,6 +1,7 @@
 package leetcode.task46;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -10,6 +11,7 @@ public class Solution {
     List<List<Integer>> result = new ArrayList<>();
     List<Integer> current = new ArrayList<>();
     int n;
+    boolean[] visited;
 
     public List<List<Integer>> permute(int[] nums) {
         if (nums == null || nums.length == 0) {
@@ -17,6 +19,8 @@ public class Solution {
         }
 
         n = nums.length;
+        visited = new boolean[n];
+        Arrays.fill(visited, false);
 
         backTrack(nums, 0);
 
@@ -30,10 +34,12 @@ public class Solution {
         }
 
         for (int i = 0; i < n; i++) {
-            if (!current.contains(nums[i])) {
+            if (!visited[i]) {
                 current.add(nums[i]);
+                visited[i] = true;
                 backTrack(nums, pos + 1);
                 current.remove(current.size() - 1);
+                visited[i] = false;
             }
         }
     }
