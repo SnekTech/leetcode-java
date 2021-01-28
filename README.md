@@ -54,6 +54,7 @@ LeetCode(CN) solutions written in Java11.
 - [x] [55](leetcode/task55/Solution.java)
 - [x] [56](leetcode/task56/Solution.java)
 - [x] [57](leetcode/task57/Solution.java)
+- [ ] [59](leetcode/task59/Solution.java)
 - [x] [86](leetcode/task86/Solution.java)
 - [x] [92](leetcode/task92/Solution.java)
 - [x] [189](leetcode/task189/Solution.java)
