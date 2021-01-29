@@ -64,4 +64,34 @@ public class Test1 {
         String actual = solution.simplifyPath(path);
         assertEquals(expected, actual);
     }
+
+    @Test
+    public void wrong1() {
+        String path = "/...";
+
+        Solution solution = new Solution();
+        String expected = "/...";
+        String actual = solution.simplifyPath(path);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void wrong2() {
+        String path = "/.hidden";
+
+        Solution solution = new Solution();
+        String expected = "/.hidden";
+        String actual = solution.simplifyPath(path);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void wrong3() {
+        String path = "/.././GVzvE/./xBjU///../..///././//////T/../../.././zu/q/e";
+
+        Solution solution = new Solution();
+        String expected = "/zu/q/e";
+        String actual = solution.simplifyPath(path);
+        assertEquals(expected, actual);
+    }
 }
