@@ -48,4 +48,15 @@ public class Test1 {
 
         assertArrayEquals(expected, nums);
     }
+
+    @Test
+    public void wrong1() {
+        int[] nums = new int[] { 1, 2, 0 };
+
+        Solution solution = new Solution();
+        int[] expected = new int[] { 0, 1, 2 };
+        solution.sortColors(nums);
+
+        assertArrayEquals(expected, nums);
+    }
 }
