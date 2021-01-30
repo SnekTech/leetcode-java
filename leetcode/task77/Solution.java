@@ -22,6 +22,10 @@ public class Solution {
     }
 
     void backTrack(int i) {
+        if (current.size() + n - i + 1 < k) {
+            return;
+        }
+
         if (current.size() == k) {
             result.add(new ArrayList<>(current));
             return;
