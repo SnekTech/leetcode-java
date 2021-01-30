@@ -46,4 +46,18 @@ public class Test1 {
         boolean actual = solution.exist(board, word);
         assertFalse(actual);
     }
+
+    @Test
+    public void wrong1() {
+        char[][] board = new char[][] {
+                { 'A','B','C','E' },
+                { 'S','F','E','S' },
+                { 'A','D','E','E' }
+        };
+        String word = "ABCESEEEFS";
+
+        Solution solution = new Solution();
+        boolean actual = solution.exist(board, word);
+        assertTrue(actual);
+    }
 }
