@@ -2,45 +2,27 @@ package leetcode.task98;
 
 import leetcode.core.TreeNode;
 
-import java.util.TreeSet;
-
 /**
  * @see <a href="https://leetcode-cn.com/problems/validate-binary-search-tree/">link</a>
  */
 public class Solution {
     public boolean isValidBST(TreeNode root) {
-        TreeSet<Integer> treeSet = new TreeSet<>();
-
-        return dfs(root, treeSet);
+        return dfs(root, null, null);
     }
 
-    private boolean dfs(TreeNode root, TreeSet<Integer> treeSet) {
-        if (root == null) {
+    private boolean dfs(TreeNode node, Integer min, Integer max) {
+        if (node == null) {
             return true;
         }
 
-        TreeSet<Integer> leftValues = new TreeSet<>();
-
-        boolean leftValid = dfs(root.left, leftValues);
-        if (!leftValid) {
+        int val = node.val;
+        if (min != null && val <= min) {
             return false;
         }
-        if (!leftValues.isEmpty() && leftValues.last() >= root.val) {
+        if (max != null && val >= max) {
             return false;
         }
 
-        TreeSet<Integer> rightValues = new TreeSet<>();
-        boolean rightValid = dfs(root.right, rightValues);
-        if (!rightValid) {
-            return false;
-        }
-        if (!rightValues.isEmpty() && rightValues.first() <= root.val) {
-            return false;
-        }
-        treeSet.add(root.val);
-        treeSet.addAll(leftValues);
-        treeSet.addAll(rightValues);
-
-        return true;
+        return dfs(node.left, min, val) && dfs(node.right, val, max);
     }
 }
