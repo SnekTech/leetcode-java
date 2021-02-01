@@ -5,28 +5,17 @@ package leetcode.task96;
  */
 public class Solution {
     public int numTrees(int n) {
-        return dfs(1, n);
-    }
+        int[] f = new int[n + 1];
 
-    private int dfs(int min, int max) {
-        if (min >= max) {
-            return 1;
-        }
-        if (min == max - 1) {
-            return 2;
-        }
-        if (min == max - 2) {
-            return 5;
+        f[0] = 1;
+        f[1] = 1;
+
+        for (int i = 2; i <= n; i++) {
+            for (int j = 1; j <= i; j++) {
+                f[i] += f[j - 1] * f[i - j];
+            }
         }
 
-        int count = 0;
-
-        for (int i = min; i <= max; i++) {
-            int leftCount = dfs(min, i - 1);
-            int rightCount = dfs(i + 1, max);
-            count += leftCount * rightCount;
-        }
-
-        return count;
+        return f[n];
     }
 }
