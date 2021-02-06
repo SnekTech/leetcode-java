@@ -25,6 +25,7 @@ LeetCode(CN) solutions written in Java11.
 
 #### LCOF
 
+- [ ] [3](lcof/task3/Solution.java)
 - [x] [57-2](lcof/task57_2/Solution.java)
 
 ### Normal
