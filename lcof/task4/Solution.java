@@ -18,36 +18,16 @@ public class Solution {
             return false;
         }
 
-        int low = 0, high = m - 1;
-        while (low < high) {
-            int mid = low + (high - low) / 2;
-            if (target == matrix[mid][0]) {
+        int i = m - 1, j = 0;
+        while (i >= 0 && j < n) {
+            if (target == matrix[i][j]) {
                 return true;
             }
-            else if (target > matrix[mid][0]) {
-                low =  mid + 1;
+            else if (target > matrix[i][j]) {
+                j++;
             }
             else {
-                high = Math.max(low, mid - 1);
-            }
-        }
-
-        assert low == high;
-        int maxM = low + 1;
-        for (int i = 0; i < maxM; i++) {
-            low = 0;
-            high = n - 1;
-            while (low <= high) {
-                int mid = low + (high - low) / 2;
-                if (target == matrix[i][mid]) {
-                    return true;
-                }
-                else if (target > matrix[i][mid]) {
-                    low = mid + 1;
-                }
-                else {
-                    high = mid -1;
-                }
+                i--;
             }
         }
 
