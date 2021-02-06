@@ -2,27 +2,24 @@ package lcof.task6;
 
 import leetcode.core.ListNode;
 
-import java.util.LinkedList;
+import java.util.Arrays;
 
 /**
  * @see <a href="https://leetcode-cn.com/problems/cong-wei-dao-tou-da-yin-lian-biao-lcof/">link</a>
  */
 public class Solution {
     public int[] reversePrint(ListNode head) {
-        LinkedList<Integer> list = new LinkedList<>();
+        int n = 10000;
+        int[] arr = new int[n];
 
+        int i = n - 1;
         var p = head;
         while (p != null) {
-            list.addFirst(p.val);
+            arr[i] = p.val;
             p = p.next;
+            i--;
         }
 
-        int[] result = new int[list.size()];
-        int i = 0;
-        for (var num : list) {
-            result[i++] = num;
-        }
-
-        return result;
+        return Arrays.copyOfRange(arr, i + 1, n);
     }
 }
