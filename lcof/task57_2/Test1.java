@@ -1,4 +1,4 @@
-package offerHunter.task57_2;
+package lcof.task57_2;
 
 import static org.junit.Assert.assertArrayEquals;
 

@@ -1,9 +1,9 @@
-package offerHunter.task57_2;
+package lcof.task57_2;
 
 import java.util.ArrayList;
 
 /**
- * @see https://leetcode-cn.com/problems/he-wei-sde-lian-xu-zheng-shu-xu-lie-lcof/
+ * @see <a href="https://leetcode-cn.com/problems/he-wei-sde-lian-xu-zheng-shu-xu-lie-lcof/">link</a>
  */
 public class Solution {
     public int[][] findContinuousSequence(int target) {

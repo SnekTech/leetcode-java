@@ -22,7 +22,10 @@ LeetCode(CN) solutions written in Java11.
 - [x] [1351](leetcode/task1351/Solution.java)
 - [x] [1394](leetcode/task1394/Solution.java)
 - [x] [1566](leetcode/task1566/Solution.java) tbo
-- [x] [剑指offer-57-2](offerHunter/task57_2/Solution.java)
+
+#### LCOF
+
+- [x] [57-2](lcof/task57_2/Solution.java)
 
 ### Normal
 
