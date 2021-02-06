@@ -5,6 +5,6 @@ package lcof.task5;
  */
 public class Solution {
     public String replaceSpace(String s) {
-        return null;
+        return s.replaceAll(" ", "%20");
     }
 }
