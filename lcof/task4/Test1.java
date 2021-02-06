@@ -36,4 +36,16 @@ public class Test1 {
         boolean actual = solution.findNumberIn2DArray(matrix, target);
         assertFalse(actual);
     }
+
+    @Test
+    public void wrong1() {
+        int[][] matrix = new int[][]{
+                {-5}
+        };
+        int target = -5;
+
+        Solution solution = new Solution();
+        boolean actual = solution.findNumberIn2DArray(matrix, target);
+        assertTrue(actual);
+    }
 }
