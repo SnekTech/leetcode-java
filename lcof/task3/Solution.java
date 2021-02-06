@@ -5,6 +5,17 @@ package lcof.task3;
  */
 public class Solution {
     public int findRepeatNumber(int[] nums) {
-        return 0;
+        int n = nums.length;
+        int[] count = new int[n];
+
+        for (int num : nums) {
+            if (count[num] == 0) {
+                count[num]++;
+            } else {
+                return num;
+            }
+        }
+
+        return nums[0];
     }
 }
