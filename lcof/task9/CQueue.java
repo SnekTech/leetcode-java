@@ -18,22 +18,16 @@ public class CQueue {
     }
 
     public int deleteHead() {
-        if (stack1.isEmpty()) {
+        if (stack2.isEmpty()) {
+            while (!stack1.isEmpty()) {
+                stack2.push(stack1.pop());
+            }
+        }
+
+        if (stack2.isEmpty()) {
             return -1;
         }
-        if (stack1.size() == 1) {
-            return stack1.pop();
-        }
 
-        while (!stack1.isEmpty()) {
-            stack2.push(stack1.pop());
-        }
-
-        int headValue = stack2.pop();
-        while (!stack2.isEmpty()) {
-            stack1.push(stack2.pop());
-        }
-
-        return headValue;
+        return stack2.pop();
     }
 }
