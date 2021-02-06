@@ -24,4 +24,24 @@ public class Test1 {
         int actual = solution.fib(n);
         assertEquals(expected, actual);
     }
+
+    @Test
+    public void wrong1() {
+        int n = 48;
+
+        Solution solution = new Solution();
+        int expected = 807526948;
+        int actual = solution.fib(n);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void wrong2() {
+        int n = 81;
+
+        Solution solution = new Solution();
+        int expected = 107920472;
+        int actual = solution.fib(n);
+        assertEquals(expected, actual);
+    }
 }
