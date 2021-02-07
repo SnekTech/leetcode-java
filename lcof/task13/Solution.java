@@ -12,7 +12,7 @@ class Solution {
 
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
-                if ((i / 10 + i % 10 + j / 10 + j % 10) > k) {
+                if (getDigitSum(i) + getDigitSum(j) > k) {
                     matrix[i][j] = -1;
                 }
                 else {
@@ -42,5 +42,15 @@ class Solution {
             int nextI = i + offset[0], nextJ = j + offset[1];
             dfs(matrix, visited, m, n, nextI, nextJ);
         }
+    }
+
+    private int getDigitSum(int x) {
+        int sum = 0;
+        while (x >= 10) {
+            sum += x % 10;
+            x /= 10;
+        }
+        sum += x;
+        return sum;
     }
 }
