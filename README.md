@@ -99,7 +99,7 @@ LeetCode(CN) solutions written in Java11.
 - [x] [11](lcof/task11/Solution.java)
 - [x] [12](lcof/task12/Solution.java)
 - [x] [13](lcof/task13/Solution.java)
-- [ ] [14-1](lcof/task14_1/Solution.java)
+- [x] [14-1](lcof/task14_1/Solution.java) tbo
 - [x] [57-2](lcof/task57_2/Solution.java)
 
 ## Awesome Tools
