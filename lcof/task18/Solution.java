@@ -7,6 +7,18 @@ import leetcode.core.ListNode;
  */
 class Solution {
     public ListNode deleteNode(ListNode head, int val) {
-        return null;
+        var dummy = new ListNode(-1);
+        dummy.next = head;
+
+        var previous = dummy;
+        while (previous.next != null) {
+            if (previous.next.val == val) {
+                previous.next = previous.next.next;
+                break;
+            }
+            previous = previous.next;
+        }
+
+        return dummy.next;
     }
 }
