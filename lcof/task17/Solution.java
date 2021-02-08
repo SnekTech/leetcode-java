@@ -5,6 +5,17 @@ package lcof.task17;
  */
 class Solution {
     public int[] printNumbers(int n) {
-        return null;
+        int max = 0, base = 1;
+        for (int i = 1; i <= n; i++) {
+            max += base * 9;
+            base *= 10;
+        }
+
+        int[] result = new int[max];
+        for (int i = 0; i < max; i++) {
+            result[i] = i + 1;
+        }
+
+        return result;
     }
 }
