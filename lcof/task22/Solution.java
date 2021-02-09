@@ -7,6 +7,15 @@ import leetcode.core.ListNode;
  */
 class Solution {
     public ListNode getKthFromEnd(ListNode head, int k) {
-        return null;
+        var p1 = head;
+        ListNode p2 = p1;
+        for (int i = 1; i < k; i++) {
+            p2 = p2.next;
+        }
+        while (p2.next != null) {
+            p1 = p1.next;
+            p2 = p2.next;
+        }
+        return p1;
     }
 }
