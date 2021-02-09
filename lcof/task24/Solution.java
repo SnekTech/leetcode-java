@@ -1,4 +1,4 @@
-package lcof.task23;
+package lcof.task24;
 
 import leetcode.core.ListNode;
 
