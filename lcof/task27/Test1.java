@@ -20,10 +20,10 @@ public class Test1 {
         TreeNode expected = new TreeNode(4);
         expected.left = new TreeNode(7);
         expected.right = new TreeNode(2);
-        expected.left.left = new TreeNode(3);
-        expected.left.right = new TreeNode(1);
-        expected.right.left = new TreeNode(9);
-        expected.right.right = new TreeNode(6);
+        expected.left.left = new TreeNode(9);
+        expected.left.right = new TreeNode(6);
+        expected.right.left = new TreeNode(3);
+        expected.right.right = new TreeNode(1);
         TreeNode actual = solution.mirrorTree(root);
         assertTrue(TreeNode.AreTreesEqual(expected, actual));
     }

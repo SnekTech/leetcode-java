@@ -7,6 +7,17 @@ import leetcode.core.TreeNode;
  */
 class Solution {
     public TreeNode mirrorTree(TreeNode root) {
-        return null;
+        if (root == null) {
+            return null;
+        }
+
+        root.left = mirrorTree(root.left);
+        root.right = mirrorTree(root.right);
+
+        var t = root.left;
+        root.left = root.right;
+        root.right = t;
+
+        return root;
     }
 }
