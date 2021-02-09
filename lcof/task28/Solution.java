@@ -8,37 +8,21 @@ import leetcode.core.TreeNode;
 @SuppressWarnings("DuplicatedCode")
 class Solution {
     public boolean isSymmetric(TreeNode root) {
-        TreeNode mirror = mirrorTreeImmutable(root);
-
-        return AreTreesEqual(root, mirror);
-    }
-
-    public TreeNode mirrorTreeImmutable(TreeNode root) {
         if (root == null) {
-            return null;
-        }
-
-        var ret = new TreeNode(root.val);
-
-        ret.left = mirrorTreeImmutable(root.left);
-        ret.right = mirrorTreeImmutable(root.right);
-
-        var t = ret.left;
-        ret.left = ret.right;
-        ret.right = t;
-
-        return ret;
-    }
-
-    public static boolean AreTreesEqual(TreeNode tree1, TreeNode tree2) {
-        if (tree1 == null && tree2 == null) {
             return true;
         }
 
-        if (tree1 == null || tree2 == null) {
+        return isSymmetric(root.left, root.right);
+    }
+
+    private boolean isSymmetric(TreeNode left, TreeNode right) {
+        if (left == null && right == null) {
+            return true;
+        }
+        if (left == null || right == null) {
             return false;
         }
 
-        return tree1.val == tree2.val && AreTreesEqual(tree1.left, tree2.left) && AreTreesEqual(tree1.right, tree2.right);
+        return left.val == right.val && isSymmetric(left.left, right.right) && isSymmetric(left.right, right.left);
     }
 }
