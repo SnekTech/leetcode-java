@@ -7,6 +7,16 @@ import leetcode.core.ListNode;
  */
 class Solution {
     public ListNode reverseList(ListNode head) {
-        return null;
+        var dummy = new ListNode(-1);
+
+        var p = head;
+        while (p != null) {
+            var t = p.next;
+            p.next = dummy.next;
+            dummy.next = p;
+            p = t;
+        }
+
+        return dummy.next;
     }
 }
