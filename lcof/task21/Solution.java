@@ -5,6 +5,29 @@ package lcof.task21;
  */
 class Solution {
     public int[] exchange(int[] nums) {
-        return null;
+        int n = nums.length;
+
+        int i = 0, j = n - 1;
+        while (i < j) {
+            while (i < n && (nums[i] & 1) == 1) {
+                i++;
+            }
+            while (j >= 0 && (nums[j] & 1) == 0) {
+                j--;
+            }
+            swap(nums, i, j);
+            i++;
+            j--;
+        }
+
+        return nums;
+    }
+
+    private void swap(int[] nums, int i, int j) {
+        if (i < j) {
+            var t = nums[i];
+            nums[i] = nums[j];
+            nums[j] = t;
+        }
     }
 }
