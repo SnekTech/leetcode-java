@@ -108,6 +108,7 @@ LeetCode(CN) solutions written in Java11.
 - [ ] [19](lcof/task19/Solution.java) can't understand the solution
 - [x] [20](lcof/task20/Solution.java)
 - [x] [21](lcof/task21/Solution.java)
+- [ ] [22](lcof/task22/Solution.java)
 - [x] [57-2](lcof/task57_2/Solution.java)
 
 ## Awesome Tools
