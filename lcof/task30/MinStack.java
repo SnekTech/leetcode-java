@@ -1,66 +1,36 @@
 package lcof.task30;
 
-import java.util.TreeMap;
+import java.util.Stack;
 
 /**
  * @see <a href="https://leetcode-cn.com/problems/bao-han-minhan-shu-de-zhan-lcof/">link</a>
  */
 class MinStack {
-    public static final int CAPACITY = 20000;
-    private int[] data;
-    int nextPos = 0;
+    Stack<Integer> a, b;
 
-    private TreeMap<Integer, Integer> mins;
-
-    /** initialize your data structure here. */
     public MinStack() {
-        data = new int[CAPACITY];
-        mins = new TreeMap<>();
+        a = new Stack<>();
+        b = new Stack<>();
     }
 
     public void push(int x) {
-        if (nextPos >= CAPACITY) {
-            throw new IllegalArgumentException("Can't push to a full stack.");
-        }
-        data[nextPos++] = x;
-        if (mins.containsKey(x)) {
-            mins.put(x, mins.get(x) + 1);
-        }
-        else {
-            mins.put(x, 1);
+        a.add(x);
+        if (b.empty() || b.peek() >= x) {
+            b.add(x);
         }
     }
 
     public void pop() {
-        if (nextPos <= 0) {
-            throw new IllegalArgumentException("Can't pop from an empty stack.");
+        if (a.pop().equals(b.peek())) {
+            b.pop();
         }
-
-        int topVal = top();
-
-        if (mins.containsKey(topVal)) {
-            if (mins.get(topVal) > 1) {
-                mins.put(topVal, mins.get(topVal) - 1);
-            }
-            else {
-                mins.remove(topVal);
-            }
-        }
-        nextPos--;
     }
 
     public int top() {
-        if (nextPos <= 0) {
-            throw new IllegalArgumentException("Empty stack has no top.");
-        }
-        return data[nextPos - 1];
+        return a.peek();
     }
 
     public int min() {
-        if (mins.isEmpty()) {
-            throw new IllegalArgumentException("Empty stack has no minimum.");
-        }
-
-        return mins.firstKey();
+        return b.peek();
     }
 }
