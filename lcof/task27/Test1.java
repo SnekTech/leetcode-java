@@ -25,6 +25,6 @@ public class Test1 {
         expected.right.left = new TreeNode(3);
         expected.right.right = new TreeNode(1);
         TreeNode actual = solution.mirrorTree(root);
-        assertTrue(TreeNode.AreTreesEqual(expected, actual));
+        assertTrue(TreeNode.areTreesEqual(expected, actual));
     }
 }
