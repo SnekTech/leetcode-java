@@ -12,29 +12,23 @@ class Solution {
     List<List<Integer>> result = new ArrayList<>();
     List<Integer> current = new ArrayList<>();
     public List<List<Integer>> pathSum(TreeNode root, int sum) {
-        if (root == null) {
-            return result;
-        }
-        current.add(root.val);
-        backTrack(root, root.val, sum);
+        backTrack(root, 0, sum);
         return result;
     }
 
     private void backTrack(TreeNode node, int sum, int max) {
-        if (sum == max && node.left == null && node.right == null) {
-            result.add(new ArrayList<>(current));
+        if (node == null) {
             return;
         }
+        current.add(node.val);
+        sum += node.val;
 
-        if (node.left != null) {
-            current.add(node.left.val);
-            backTrack(node.left, sum + node.left.val, max);
-            current.remove(current.size() - 1);
+        if (sum == max && node.left == null && node.right == null) {
+            result.add(new ArrayList<>(current));
         }
-        if (node.right != null) {
-            current.add(node.right.val);
-            backTrack(node.right, sum + node.right.val, max);
-            current.remove(current.size() - 1);
-        }
+
+        backTrack(node.left, sum, max);
+        backTrack(node.right, sum, max);
+        current.remove(current.size() - 1);
     }
 }
