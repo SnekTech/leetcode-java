@@ -13,44 +13,28 @@ public class Codec {
 
     // Encodes a tree to a single string.
     public String serialize(TreeNode root) {
+        if (root == null) {
+            return "[]";
+        }
         StringBuilder str = new StringBuilder();
         str.append('[');
-        if (root == null) {
-            str.append(']');
-            return str.toString();
-        }
 
         Queue<TreeNode> queue = new LinkedList<>();
-        LinkedList<TreeNode> list = new LinkedList<>();
         queue.add(root);
         while (!queue.isEmpty()) {
-            var node = queue.remove();
-            list.addLast(node);
+            var node = queue.poll();
 
             if (node != null) {
+                str.append(node.val).append(",");
                 queue.add(node.left);
                 queue.add(node.right);
             }
-        }
-
-        while (list.peekLast() == null) {
-            list.removeLast();
-        }
-
-        while (!list.isEmpty()) {
-            var node = list.removeFirst();
-            if (node == null) {
-                str.append("null");
-            }
             else {
-                str.append(node.val);
-            }
-
-            if (!list.isEmpty()) {
-                str.append(',');
+                str.append("null,");
             }
         }
 
+        str.deleteCharAt(str.length() - 1);
         str.append(']');
 
         return str.toString();
@@ -61,41 +45,26 @@ public class Codec {
         if (data.equals("[]")) {
             return null;
         }
-        data = data.substring(1, data.length() - 1);
-        var raw = data.split(",");
-        int n = raw.length;
 
-        // 此处前后各多加一个元素 null
-        // 前者为了调整索引值，方便计算二叉树左右孩子索引
-        // 后者为了在计算最后一个非叶节点的右孩子时防止数组越界
-        ArrayList<TreeNode> treeNodes = new ArrayList<>(n * 2);
-        for (int i = 0; i < 2 * n + 2; i++) {
-            treeNodes.add(null);
-        }
-        for (int i = 1; i <= n; i++) {
-            var t = raw[i - 1];
-            if (!t.equals("null")) {
-                treeNodes.set(i, new TreeNode(Integer.parseInt(t)));
+        var vals = data.substring(1, data.length() - 1).split(",");
+        var root = new TreeNode(Integer.parseInt(vals[0]));
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+        int i = 1;
+        while (!queue.isEmpty()) {
+            var node = queue.poll();
+            if (!vals[i].equals("null")) {
+                node.left = new TreeNode(Integer.parseInt(vals[i]));
+                queue.add(node.left);
             }
-        }
-
-        for (int i = 1; i <= (int)Math.pow(2, (double)n / 2); i++) {
-            if (treeNodes.get(i) == null) {
-                treeNodes.add(2 * i, null);
-                treeNodes.add(2 * i + 1, null);
+            i++;
+            if (!vals[i].equals("null")) {
+                node.right = new TreeNode(Integer.parseInt(vals[i]));
+                queue.add(node.right);
             }
+            i++;
         }
 
-        for (int i = 1; i <= treeNodes.size() / 2; i++) {
-            var node = treeNodes.get(i);
-            if (node == null) {
-                continue;
-            }
-
-            node.left = treeNodes.get(2 * i);
-            node.right = treeNodes.get(2 * i + 1);
-        }
-
-        return treeNodes.get(1);
+        return root;
     }
 }
