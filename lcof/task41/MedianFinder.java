@@ -1,62 +1,34 @@
 package lcof.task41;
 
 import java.util.ArrayList;
+import java.util.PriorityQueue;
+import java.util.Queue;
 
 /**
  * @see <a href="https://leetcode-cn.com/problems/shu-ju-liu-zhong-de-zhong-wei-shu-lcof/">link</a>
  */
 class MedianFinder {
-    ArrayList<Integer> data;
+    Queue<Integer> A, B;
 
     /** initialize your data structure here. */
     public MedianFinder() {
-        data = new ArrayList<>(50000);
+        A = new PriorityQueue<>();
+        B = new PriorityQueue<>((a, b) -> b - a);
     }
 
     public void addNum(int num) {
-        int pos = 0;
-        int left = 0, right = data.size() - 1;
-        while (left <= right) {
-            if (right - left == 1) {
-                if (num <= data.get(left)) {
-                    pos = left;
-                }
-                else if (num <= data.get(right)) {
-                    pos = right;
-                }
-                else {
-                    pos = right + 1;
-                }
-                break;
-            }
-
-            if (right == left) {
-                pos = num <= data.get(left) ? left : left + 1;
-                break;
-            }
-
-            int mid = left + (right - left) / 2;
-            if (num == data.get(mid)) {
-                pos = mid;
-                break;
-            }
-            else if (num < data.get(mid)) {
-                right = mid - 1;
-            }
-            else {
-                left = mid + 1;
-            }
+        if (A.size() != B.size()) {
+            A.add(num);
+            B.add(A.poll());
         }
-
-        data.add(pos, num);
+        else {
+            B.add(num);
+            A.add(B.poll());
+        }
     }
 
     public double findMedian() {
-        int size = data.size();
-        if (size == 0) {
-            return 0;
-        }
-
-        return size % 2 == 0 ? (data.get(size / 2 - 1) + data.get(size / 2)) / 2.0 : data.get(size / 2);
+        assert A.size() > 0;
+        return A.size() != B.size() ? A.peek() : (A.peek() + B.peek()) / 2.0;
     }
 }
