@@ -1,6 +1,5 @@
 package leetcode.task47;
 
-
 import java.util.*;
 
 /**
@@ -37,7 +36,7 @@ public class Solution {
         }
 
         for (int i = 0; i < n; i++) {
-            if (i > 0 && nums[i] == nums[i - 1] && !visited[i - 1]) {
+            if (i > 0 && nums[i] == nums[i - 1] && !visited[i - 1] && !visited[i - 1]) {
                 continue;
             }
 
