@@ -13,4 +13,13 @@ public class Test1 {
         var actual = solution.permutation(s);
         assertTrue(true);
     }
+
+    @Test
+    public void wrong1() {
+        String s = "aab";
+
+        Solution solution = new Solution();
+        var actual = solution.permutation(s);
+        assertTrue(true);
+    }
 }
