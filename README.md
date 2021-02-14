@@ -134,7 +134,7 @@ LeetCode(CN) solutions written in Java11.
 - [x] [45](lcof/task45/Solution.java)
 - [x] [46](lcof/task46/Solution.java)
 - [x] [47](lcof/task47/Solution.java)
-- [ ] [48](lcof/task48/Solution.java)
+- [x] [48](lcof/task48/Solution.java)
 - [x] [57-2](lcof/task57_2/Solution.java)
 
 ## Awesome Tools
