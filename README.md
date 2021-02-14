@@ -131,7 +131,7 @@ LeetCode(CN) solutions written in Java11.
 - [x] [41](lcof/task41/MedianFinder.java)
 - [x] [42](lcof/task42/Solution.java)
 - [x] [44](lcof/task44/Solution.java) copy
-- [ ] [45](lcof/task45/Solution.java)
+- [x] [45](lcof/task45/Solution.java)
 - [x] [57-2](lcof/task57_2/Solution.java)
 
 ## Awesome Tools
