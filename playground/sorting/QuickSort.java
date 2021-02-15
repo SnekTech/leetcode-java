@@ -20,6 +20,39 @@ public class QuickSort implements Sort {
         quickSort(nums, pivot + 1, right);
     }
 
+    private void quickSort3Ways(int[] nums, int left, int right) {
+        if (left >= right) {
+            return;
+        }
+
+        swap(nums, left, left + new Random().nextInt(right - left + 1));
+
+        int pivot = nums[left];
+
+        int lt = left; // [left + 1 ... lt] < pivot
+        int i = lt + 1; // [lt + 1 ... i) == pivot
+        int gt = right + 1; // [gt ... right] > pivot
+
+        while (i < gt) {
+            if (nums[i] < pivot) {
+                swap(nums, i, lt + 1);
+                lt++;
+                i++;
+            }
+            else if (nums[i] > pivot) {
+                swap(nums, i, gt - 1);
+                gt--;
+            }
+            else {
+                i++;
+            }
+        }
+        swap(nums, left, lt);
+
+        quickSort3Ways(nums, left, lt - 1);
+        quickSort3Ways(nums, gt, right);
+    }
+
     private int partition(int[] nums, int left, int right) {
         swap(nums, left, left + new Random().nextInt(right - left + 1));
 
