@@ -1,5 +1,7 @@
 package playground.sorting;
 
+import java.util.Random;
+
 import static playground.sorting.Utils.swap;
 
 public class QuickSort implements Sort {
@@ -19,6 +21,8 @@ public class QuickSort implements Sort {
     }
 
     private int partition(int[] nums, int left, int right) {
+        swap(nums, left, left + new Random().nextInt(right - left + 1));
+
         int pivot = nums[left];
         // [left + 1 ... j] <= pivot
         // [j + 1 ... i) > pivot
