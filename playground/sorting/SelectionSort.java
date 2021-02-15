@@ -2,8 +2,8 @@ package playground.sorting;
 
 import static playground.sorting.Utils.swap;
 
-public class SelectionSort {
-    public static void sort(int[] nums) {
+public class SelectionSort implements Sort {
+    public void sort(int[] nums) {
         if (nums == null) {
             return;
         }
@@ -23,6 +23,7 @@ public class SelectionSort {
 
     public static void main(String[] args) {
         int[] nums = new int[] {1 ,3, 4, 2};
-        sort(nums);
+        Sort sort = new SelectionSort();
+        sort.sort(nums);
     }
 }
