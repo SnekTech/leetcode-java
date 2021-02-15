@@ -15,7 +15,7 @@ public class QuickSort implements Sort {
             return;
         }
 
-        int pivot = partition(nums, left, right);
+        int pivot = partition2(nums, left, right);
         quickSort(nums, left, pivot - 1);
         quickSort(nums, pivot + 1, right);
     }
@@ -34,6 +34,30 @@ public class QuickSort implements Sort {
             }
             i++;
         }
+        swap(nums, left, j);
+        return j;
+    }
+
+    private int partition2(int[] nums, int left, int right) {
+        swap(nums, left, left + new Random().nextInt(right - left + 1));
+
+        int pivot = nums[left];
+        // [left + 1 ... i) <= pivot
+        // (j ... right] >= pivot
+        int i = left + 1, j = right;
+        while (true) {
+            while (i <= right && nums[i] < pivot) i++;
+            while (j >= left + 1 && nums[j] > pivot) j--;
+
+            if (i > j) {
+                break;
+            }
+
+            swap(nums, i, j);
+            i++;
+            j--;
+        }
+
         swap(nums, left, j);
         return j;
     }

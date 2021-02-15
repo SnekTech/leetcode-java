@@ -12,6 +12,10 @@ public class Utils {
             throw new IllegalArgumentException();
         }
 
+        if (i == j) {
+            return;
+        }
+
         var t = nums[i];
         nums[i] = nums[j];
         nums[j] = t;
