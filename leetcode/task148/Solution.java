@@ -7,7 +7,47 @@ import leetcode.core.ListNode;
  */
 class Solution {
     public ListNode sortList(ListNode head) {
-        return sortList(head, null);
+        if (head == null) {
+            return null;
+        }
+
+        int length = 0;
+        ListNode node = head;
+        while (node != null) {
+            length++;
+            node = node.next;
+        }
+
+        ListNode dummy = new ListNode(0, head);
+        for (int size = 1; size < length; size <<= 1) {
+            ListNode prev = dummy, current = dummy.next;
+            while (current != null) {
+                ListNode head1 = current;
+                for (int i = 1; i < size && current.next != null; i++) {
+                    current = current.next;
+                }
+                ListNode head2 = current.next;
+                current.next = null;
+                current = head2;
+                for (int i = 1; i < size && current != null && current.next != null; i++) {
+                    current = current.next;
+                }
+
+                ListNode next = null;
+                if (current != null) {
+                    next = current.next;
+                    current.next = null;
+                }
+
+                prev.next = merge(head1, head2);
+                while (prev.next != null) {
+                    prev = prev.next;
+                }
+                current = next;
+            }
+        }
+
+        return dummy.next;
     }
 
     private ListNode sortList(ListNode head, ListNode tail) {
