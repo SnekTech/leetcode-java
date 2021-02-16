@@ -11,7 +11,7 @@ LeetCode(CN) solutions written in Java11.
 > Build the foundation!
 
 - [x] [1](leetcode/task1/Solution.java)
-- [ ] [160](leetcode/task160/Solution.java)
+- [x] [160](leetcode/task160/Solution.java) tbo
 - [x] [206](leetcode/task206/Solution.java)
 - [x] [389](leetcode/task389/Solution.java)
 - [x] [392](leetcode/task392/Solution.java)
