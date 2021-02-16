@@ -11,9 +11,16 @@ class Solution {
             return head;
         }
 
-        var p = reverseList(head.next);
-        head.next.next = head;
+        var dummy = new ListNode(0, head);
+        var p = head;
+        while (p != null) {
+            var next = p.next;
+            p.next = dummy.next;
+            dummy.next = p;
+            p = next;
+        }
         head.next = null;
-        return p;
+
+        return dummy.next;
     }
 }
