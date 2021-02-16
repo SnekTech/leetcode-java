@@ -44,4 +44,14 @@ public class Test1 {
         String actual = solution.largestNumber(nums);
         assertEquals(expected, actual);
     }
+
+    @Test
+    public void wrong1() {
+        int[] nums = new int[] {0, 0};
+
+        Solution solution = new Solution();
+        String expected = "0";
+        String actual = solution.largestNumber(nums);
+        assertEquals(expected, actual);
+    }
 }
