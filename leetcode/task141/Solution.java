@@ -2,22 +2,25 @@ package leetcode.task141;
 
 import leetcode.core.ListNode;
 
-import java.util.HashSet;
-
 /**
  * @see <a href="https://leetcode-cn.com/problems/linked-list-cycle/">link</a>
  */
 public class Solution {
     public boolean hasCycle(ListNode head) {
-        HashSet<ListNode> set = new HashSet<>();
-        var p = head;
-        while (p != null) {
-            set.add(p);
-            if (set.contains(p.next)) {
-                return true;
-            }
-            p = p.next;
+        if (head == null) {
+            return false;
         }
-        return false;
+
+        ListNode slow = head, fast = head.next;
+        while (slow != fast) {
+            if (fast == null || fast.next == null) {
+                return false;
+            }
+
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        return true;
     }
 }
