@@ -4,6 +4,7 @@ import java.util.Random;
 
 import static playground.sorting.Utils.swap;
 
+@SuppressWarnings("DuplicatedCode")
 public class QuickSort implements Sort {
     @Override
     public void sort(int[] nums) {
