@@ -87,7 +87,7 @@ LeetCode(CN) solutions written in Java11.
 
 ### Hard
 
-> Hope I can get here...
+- [ ] [4](leetcode/task4/Solution.java)
 
 ### LCOF
 
