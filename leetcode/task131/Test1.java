@@ -19,7 +19,7 @@ public class Test1 {
         String s = "aba";
 
         Solution solution = new Solution();
-        boolean actual = solution.isPalindrome(s);
+        boolean actual = solution.isPalindrome(s, 0, s.length() - 1);
         assertTrue(actual);
     }
 
@@ -28,7 +28,7 @@ public class Test1 {
         String s = "abaa";
 
         Solution solution = new Solution();
-        boolean actual = solution.isPalindrome(s);
+        boolean actual = solution.isPalindrome(s, 0, s.length() - 1);
         assertFalse(actual);
     }
 }
