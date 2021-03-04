@@ -14,6 +14,7 @@ LeetCode(CN) solutions written in Java11.
 - [x] [53](leetcode/task53/Solution.java)
 - [x] [70](leetcode/task70/Solution.java)
 - [x] [101](leetcode/task101/Solution.java)
+- [x] [104](leetcode/task104/Solution.java)
 - [x] [141](leetcode/task141/Solution.java)
 - [x] [160](leetcode/task160/Solution.java) tbo
 - [x] [206](leetcode/task206/Solution.java)
@@ -84,7 +85,6 @@ LeetCode(CN) solutions written in Java11.
 - [x] [96](leetcode/task96/Solution.java)
 - [x] [98](leetcode/task98/Solution.java)
 - [x] [102](leetcode/task102/Solution.java)
-- [ ] [104](leetcode/task104/Solution.java)
 - [x] [131](leetcode/task131/Solution.java)
 - [x] [142](leetcode/task142/Solution.java) tbo
 - [x] [146](leetcode/task146/LRUCache.java) tbo
