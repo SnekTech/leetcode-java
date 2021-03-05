@@ -8,7 +8,7 @@ public class Test1 {
     @Test
     public void example1() {
         // n = 3
-        int[] nums = new int[] {1, 2, 3, 3};
+        int[] nums = new int[] {1, 3, 2, 3};
 
         Solution solution = new Solution();
         int expected = 3;
@@ -19,7 +19,7 @@ public class Test1 {
     @Test
     public void example2() {
         // n = 3
-        int[] nums = new int[] {2, 2, 3, 1};
+        int[] nums = new int[] {2, 1, 2, 3};
 
         Solution solution = new Solution();
         int expected = 2;

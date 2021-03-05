@@ -5,6 +5,25 @@ package playground.task1;
  */
 public class Solution {
     public int find(int[] nums) {
-        return 0;
+        for (int i = 1; i < nums.length; i++) {
+            while (nums[i] != i) {
+                if (nums[i] == nums[nums[i]]) {
+                    return nums[i];
+                }
+                swap(nums, i, nums[nums[i]]);
+            }
+        }
+
+        return nums[0];
+    }
+
+    void swap(int[] nums, int i, int j) {
+        if (i == j) {
+            return;
+        }
+
+        int t = nums[i];
+        nums[i] = nums[j];
+        nums[j] = t;
     }
 }
