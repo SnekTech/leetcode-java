@@ -108,7 +108,7 @@ LeetCode(CN) solutions written in Java11.
 - [x] [4](leetcode/task4/Solution.java)
 - [x] [23](leetcode/task23/Solution.java)
 - [x] [124](leetcode/task124/Solution.java)
-- [x] [128](leetcode/task128/Solution.java) tbo
+- [x] [128](leetcode/task128/Solution.java)
 
 ### LCOF
 
