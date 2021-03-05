@@ -34,4 +34,24 @@ public class Test1 {
         int actual = solution.longestValidParentheses(s);
         assertEquals(expected, actual);
     }
+
+    @Test
+    public void wrong1() {
+        String s = "()(()";
+
+        Solution solution = new Solution();
+        int expected = 2;
+        int actual = solution.longestValidParentheses(s);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void wrong2() {
+        String s = "(()(((()";
+
+        Solution solution = new Solution();
+        int expected = 2;
+        int actual = solution.longestValidParentheses(s);
+        assertEquals(expected, actual);
+    }
 }
