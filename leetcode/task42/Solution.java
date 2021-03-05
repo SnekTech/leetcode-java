@@ -5,19 +5,26 @@ package leetcode.task42;
  */
 class Solution {
     public int trap(int[] height) {
+        if (height == null || height.length == 0) {
+            return 0;
+        }
+
         int n = height.length;
         int sum = 0;
+        int[] leftMax = new int[n];
+        int[] rightMax = new int[n];
+
+        leftMax[0] = height[0];
+        for (int i = 1; i < n; i++) {
+            leftMax[i] = Math.max(height[i], leftMax[i - 1]);
+        }
+        rightMax[n - 1] = height[n - 1];
+        for (int i = n - 2; i >= 0; i--) {
+            rightMax[i] = Math.max(height[i], rightMax[i + 1]);
+        }
 
         for (int i = 1; i < n - 1; i++) {
-            int maxLeft = 0, maxRight = 0;
-            for (int j = i; j >= 0; j--) {
-                maxLeft = Math.max(maxLeft, height[j]);
-            }
-            for (int j = i; j < n; j++) {
-                maxRight = Math.max(maxRight, height[j]);
-            }
-
-            sum += Math.min(maxLeft, maxRight) - height[i];
+            sum += Math.min(leftMax[i], rightMax[i]) - height[i];
         }
 
         return sum;
