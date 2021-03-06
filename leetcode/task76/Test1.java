@@ -24,4 +24,14 @@ public class Test1 {
         String actual = solution.minWindow(s, t);
         assertEquals(expected, actual);
     }
+
+    @Test
+    public void wrong1() {
+        String s = "adobecodebancbbcaa", t = "abc";
+
+        Solution solution = new Solution();
+        String expected = "bca";
+        String actual = solution.minWindow(s, t);
+        assertEquals(expected, actual);
+    }
 }
