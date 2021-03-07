@@ -107,6 +107,7 @@ LeetCode(CN) solutions written in Java11.
 
 - [x] [4](leetcode/task4/Solution.java)
 - [x] [23](leetcode/task23/Solution.java)
+- [ ] [25](leetcode/task25/Solution.java)
 - [x] [32](leetcode/task32/Solution.java)
 - [x] [42](leetcode/task42/Solution.java)
 - [x] [72](leetcode/task72/Solution.java)
