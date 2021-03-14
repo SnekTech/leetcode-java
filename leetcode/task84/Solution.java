@@ -1,29 +1,45 @@
 package leetcode.task84;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
+
 /**
  * @see <a href="https://leetcode-cn.com/problems/largest-rectangle-in-histogram/">link</a>
  */
 class Solution {
+    @SuppressWarnings("ConstantConditions")
     public int largestRectangleArea(int[] heights) {
-        int ans = 0;
-        int n = heights.length;
-
-        for (int mid = 0; mid < n; mid++) {
-            int height = heights[mid];
-            int left = mid, right = mid;
-
-            while (left >= 0 && heights[left] >= height) {
-                left--;
-            }
-            left++;
-            while (right < n && heights[right] >= height) {
-                right++;
-            }
-            right--;
-
-            ans = Math.max(ans, height * (right - left + 1));
+        int len = heights.length;
+        if (len == 0) {
+            return 0;
         }
 
-        return ans;
+        if (len == 1) {
+            return heights[0];
+        }
+
+        int res = 0;
+
+        int[] newHeights = new int[len + 2];
+        newHeights[0] = 0;
+        System.arraycopy(heights, 0, newHeights, 1, len);
+        newHeights[len + 1] = 0;
+        len += 2;
+        heights = newHeights;
+
+        Deque<Integer> stack = new ArrayDeque<>(len);
+        // 先放入哨兵，在循环中就不用做非空判断
+        stack.addLast(0);
+
+        for (int i = 1; i < len; i++) {
+            while (heights[i] < heights[stack.peekLast()]) {
+                int curHeight = heights[stack.pollLast()];
+                int curWidth = i - stack.peekLast() - 1;
+                res = Math.max(res, curHeight * curWidth);
+            }
+            stack.addLast(i);
+        }
+
+        return res;
     }
 }
