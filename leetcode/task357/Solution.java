@@ -5,6 +5,26 @@ package leetcode.task357;
  */
 class Solution {
     public int countNumbersWithUniqueDigits(int n) {
-        return 0;
+        if (n == 0) {
+            return 1;
+        }
+
+        int[] dp = new int[n + 1];
+        if (n > 0) {
+            dp[1] = 10;
+        }
+        if (n > 1) {
+            dp[2] = 81;
+        }
+        for (int i = 3; i <= n; i++) {
+            dp[i] = dp[i - 1] * (10 - (i - 1));
+        }
+
+        int count = 0;
+        for (var x : dp) {
+            count += x;
+        }
+
+        return count;
     }
 }

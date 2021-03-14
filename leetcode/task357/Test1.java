@@ -14,4 +14,14 @@ public class Test1 {
         int actual = solution.countNumbersWithUniqueDigits(n);
         assertEquals(expected, actual);
     }
+
+    @Test
+    public void wrong1() {
+        int n = 0;
+
+        Solution solution = new Solution();
+        int expected = 1;
+        int actual = solution.countNumbersWithUniqueDigits(n);
+        assertEquals(expected, actual);
+    }
 }
