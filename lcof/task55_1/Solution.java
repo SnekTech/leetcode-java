@@ -7,6 +7,14 @@ import leetcode.core.TreeNode;
  */
 class Solution {
     public int maxDepth(TreeNode root) {
-        return 0;
+        return max(root);
+    }
+
+    int max(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+
+        return Math.max(max(root.left), max(root.right)) + 1;
     }
 }
