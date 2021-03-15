@@ -16,4 +16,14 @@ public class Test1 {
         var actual = solution.getIntersectionNode(headA, headB);
         assertTrue(true);
     }
+
+    @Test
+    public void wrong1() {
+        ListNode headA = ListNode.createList(new int[] {1});
+        ListNode headB = null;
+
+        Solution solution = new Solution();
+        var actual = solution.getIntersectionNode(headA, headB);
+        assertTrue(true);
+    }
 }
