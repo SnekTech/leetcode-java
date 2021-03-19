@@ -24,4 +24,14 @@ public class Test1 {
         char actual = solution.firstUniqChar(s);
         assertEquals(expected, actual);
     }
+
+    @Test
+    public void example3() {
+        String s = "cc";
+
+        Solution solution = new Solution();
+        char expected = ' ';
+        char actual = solution.firstUniqChar(s);
+        assertEquals(expected, actual);
+    }
 }
