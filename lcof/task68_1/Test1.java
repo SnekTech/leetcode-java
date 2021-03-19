@@ -42,7 +42,7 @@ public class Test1 {
         TreeNode p = root.left, q = root.left.right;
 
         Solution solution = new Solution();
-        TreeNode expected = root;
+        TreeNode expected = root.left;
         TreeNode actual = solution.lowestCommonAncestor(root, p, q);
         assertEquals(expected, actual);
     }
