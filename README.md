@@ -191,7 +191,7 @@ LeetCode(CN) solutions written in Java11.
 - [x] [59-1](lcof/task59_1/Solution.java)
 - [x] [59-2](lcof/task59_2/MaxQueue.java)
 - [x] [60](lcof/task60/Solution.java)
-- [ ] [61](lcof/task61/Solution.java)
+- [x] [61](lcof/task61/Solution.java)
 
 ## Awesome Tools
 
